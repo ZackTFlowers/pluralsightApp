@@ -21,7 +21,7 @@ class IntroScreen extends StatelessWidget {
                   color: Colors.white,
                   shadows: [Shadow(
                     color: Colors.black,
-                    blurRadius: 10,
+                    blurRadius: 12,
                     offset: Offset(5, 5)
                   )]
                   ),
