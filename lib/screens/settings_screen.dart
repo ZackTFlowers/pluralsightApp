@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_app2/data/sp_helper.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -11,6 +12,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final TextEditingController txtName = TextEditingController();
   final List<String> _images = ['Lake', 'Mountain', 'Sea', 'Country'];
   String _selectedImage = 'Lake';
+
+  @override
+  void initState() {
+    super.initState();
+    getSettings();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +45,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          saveSettings();
+        },
+        child: const Icon(Icons.save)
+        ),
     );
+  }
+
+  Future saveSettings() async {
+    final SPHelper helper = SPHelper();
+    await helper.set_settings(txtName.text, _selectedImage);
+  }
+
+  Future<void> getSettings() async {
+    final SPHelper helper = SPHelper();
+    Map<String, String> settings = await helper.getSettings();
+    _selectedImage = settings['image'] ?? 'Lake';
+    txtName.text = settings['name'] ?? '';
+    setState(() {
+
+      }
+    );
+
   }
 }
