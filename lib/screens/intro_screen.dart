@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_app2/screens/settings_screen.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -21,7 +22,7 @@ class IntroScreen extends StatelessWidget {
                   color: Colors.white,
                   shadows: [Shadow(
                     color: Colors.black,
-                    blurRadius: 12,
+                    blurRadius: 10,
                     offset: Offset(5, 5)
                   )]
                   ),
@@ -30,7 +31,14 @@ class IntroScreen extends StatelessWidget {
           Align(
             alignment: Alignment(0, 0.5),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const SettingsScreen();
+                    })
+                );
+              },
               child: Text('Start')),
           )
         ],
