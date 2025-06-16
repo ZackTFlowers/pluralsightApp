@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SpHelper {
+class SPHelper {
   static const keyName = 'name';
   static const keyImage = 'image';
 
@@ -24,8 +24,8 @@ class SpHelper {
 
     try {
       return {
-        'name': name,
-        'image': image
+        keyName: name,
+        keyImage: image
       };
     } on Exception catch (_) {
       return {};
